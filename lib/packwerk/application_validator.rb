@@ -221,7 +221,7 @@ module Packwerk
 
       packages_with_invalid_dependencies =
         packages_dependencies.each_with_object([]) do |(package, dependencies), invalid_packages|
-          invalid_dependencies = dependencies.filter { |path| invalid_package_path?(path) }
+          invalid_dependencies = dependencies.select { |path| invalid_package_path?(path) }
           invalid_packages << [package, invalid_dependencies] if invalid_dependencies.any?
         end
 
@@ -230,7 +230,7 @@ module Packwerk
       else
         error_locations = packages_with_invalid_dependencies.map do |package, invalid_dependencies|
           package ||= @configuration.root_path
-          package_path = Pathname.new(package).relative_path_from(@configuration.root_path)
+          package_path = Pathname.new(package).relative_path_from(Pathname.new(@configuration.root_path))
           all_invalid_dependencies = invalid_dependencies.map { |d| "  - #{d}" }
 
           <<~EOS
@@ -305,7 +305,7 @@ module Packwerk
     end
 
     def relative_path(path)
-      Pathname.new(path).relative_path_from(@configuration.root_path)
+      Pathname.new(path).relative_path_from(Pathname.new(@configuration.root_path))
     end
 
     def invalid_package_path?(path)

@@ -14,7 +14,7 @@ module Packwerk
         package_paths = package_paths(root_path, package_pathspec || "**")
 
         packages = package_paths.map do |path|
-          root_relative = path.dirname.relative_path_from(root_path)
+          root_relative = path.dirname.relative_path_from(Pathname.new(root_path))
           Package.new(name: root_relative.to_s, config: YAML.load_file(path))
         end
 

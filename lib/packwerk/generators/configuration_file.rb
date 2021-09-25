@@ -56,7 +56,7 @@ module Packwerk
       end
 
       def render
-        ERB.new(template, trim_mode: "-").result(binding)
+        ERB.new(template, nil, "-").result(binding)
       end
 
       def template

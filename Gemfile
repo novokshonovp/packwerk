@@ -8,8 +8,8 @@ gemspec
 # Specify the same dependency sources as the application Gemfile
 
 gem("spring")
-gem("rails", github: "rails/rails", branch: "main")
-gem("constant_resolver", require: false)
+gem("rails", "~> 5.2.4")
+gem("constant_resolver", git: "https://github.com/novokshonovp/constant_resolver", require: false)
 gem("sorbet-runtime", require: false)
 gem("rubocop-performance", require: false)
 gem("rubocop-sorbet", require: false)

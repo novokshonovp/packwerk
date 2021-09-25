@@ -53,7 +53,7 @@ module Packwerk
 
       relative_path =
         Pathname.new(file_path)
-          .relative_path_from(@root_path).to_s
+          .relative_path_from(Pathname.new(@root_path)).to_s
 
       source_package = @context_provider.package_from_path(relative_path)
 

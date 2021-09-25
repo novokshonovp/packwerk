@@ -1,3 +1,4 @@
+/.idea/
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -11,3 +12,4 @@
 .rubocop-*
 .byebug_history
 sorbet/rbi/hidden-definitions/errors.txt
+.rakeTasks

@@ -21,9 +21,11 @@ module Packwerk
       return [UnknownFileTypeResult.new(file: file_path)] if parser.nil?
 
       node = File.open(file_path, "r", external_encoding: Encoding::UTF_8) do |file|
-        parser.call(io: file, file_path: file_path)
-      rescue Parsers::ParseError => e
-        return [e.result]
+        begin
+          parser.call(io: file, file_path: file_path)
+        rescue Parsers::ParseError => e
+          return [e.result]
+        end
       end
 
       result = []

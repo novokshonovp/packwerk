@@ -4,7 +4,8 @@
 ENV["RAILS_ENV"] = "test"
 
 $LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
-ROOT = Pathname.new(__dir__).join("..").expand_path
+
+ROOT = Pathname.new(File.expand_path(Dir.pwd))
 
 require "packwerk"
 
